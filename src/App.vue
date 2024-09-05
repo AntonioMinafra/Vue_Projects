@@ -4,11 +4,14 @@
             <h1>My Friends</h1>
         </header>
         <ul>
-          <friend-contact v-for="friend in friends" :key="friend.id"
+          <friend-contact v-for="friend in friends"
+          :key="friend.id"
+          :id="friend.id"
           :name="friend.name"
           :phone-number="friend.phone"
           :email-address="friend.email"
-          :is-favorite="true"
+          :is-favorite="friend.isFavorite"
+          @toggle-favorite="toggleFavoriteStatus"
           ></friend-contact>
         </ul>
     </section>
@@ -25,16 +28,25 @@ export default {
         name: "Manuel Lorenz",
         phone: "2345 234 56",
         email: "manuel@gmail.com",
+        isFavorite: true,
       },
       {
         id: "tony",
         name: "Tony Lorenz",
         phone: "2335 294 46",
         email: "tony@gmail.com",
+        isFavorite: false,
+
       },
       ]
     }
   },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find( friend => friend.id === friendId);
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    }
+  }
 }
 </script>
 
