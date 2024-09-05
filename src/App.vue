@@ -4,19 +4,12 @@
             <h1>My Friends</h1>
         </header>
         <ul>
-          <friend-contact
-          name="Manuel Lorenz"
-          phone-number="123 456 789"
-          email-address="Manuel@gmail.com"
-          is-favorite="1"
+          <friend-contact v-for="friend in friends" :key="friend.id"
+          :name="friend.name"
+          :phone-number="friend.phone"
+          :email-address="friend.email"
+          :is-favorite="true"
           ></friend-contact>
-          <friend-contact
-          name="Giulia Rossi"
-          phone-number="133 4596 782"
-          email-address="Giulia@gmail.com"
-          is-favorite="0"
-          ></friend-contact>
-
         </ul>
     </section>
 </template>
