@@ -7,12 +7,14 @@
           <friend-contact
           name="Manuel Lorenz"
           phone-number="123 456 789"
-          email-address="manuel@gmail.com"
+          email-address="Manuel@gmail.com"
+          is-favorite="1"
           ></friend-contact>
           <friend-contact
-          name="giulia Acqua"
+          name="Giulia Rossi"
           phone-number="133 4596 782"
-          email-address="giulia@gmail.com"
+          email-address="Giulia@gmail.com"
+          is-favorite="0"
           ></friend-contact>
 
         </ul>
