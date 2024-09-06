@@ -1,6 +1,6 @@
-# vue_first_app
+# Vue_Projects
 
-## Project setup
+## Projects setup
 ```
 npm install
 ```
@@ -19,8 +19,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# Vue_Projects
-# Vue_Projects
