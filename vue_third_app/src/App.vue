@@ -6,7 +6,9 @@
 <!--     <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
     <menage-goals v-if="selectedComponent === 'menage-goals'"></menage-goals> -->
     <!-- componente dinamico fatto sopra con molto codice e qui sotto con l'elemento component quindi meno sintassi-->
-    <component :is="selectedComponent"></component>
+     <keep-alive>
+       <component :is="selectedComponent"></component>
+     </keep-alive>
   </div>
 </template>
 
