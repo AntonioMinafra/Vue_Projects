@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
     <div class="form-control">
       <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm">
@@ -72,6 +72,7 @@ export default {
       referrer: 'wom',
       interest: [],
       how: null,
+      rating: null,
       confirm: false,
       userNameValidity: 'invalid',
 
@@ -84,6 +85,7 @@ export default {
       this.userAge = null;
       this.referrer = 'wom';
       this.interest = [];
+      this.rating = null;
       this.how = null;
       this.confirm = false;
 
