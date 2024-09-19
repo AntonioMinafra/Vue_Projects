@@ -29,6 +29,7 @@
         <p
           v-if="invalidInput"
         >One or more input fields are invalid. Please check your provided data.</p>
+        <p v-if="error"> {{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -44,27 +45,41 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
 
   methods: {
-    submitSurvey() {
-      if (this.enteredName === '' || !this.chosenRating) {
-        this.invalidInput = true;
-        return;
-      }
-      this.invalidInput = false;
+  async submitSurvey() {
+    if (this.enteredName === '' || !this.chosenRating) {
+      this.invalidInput = true;
+      return;
+    }
+    this.invalidInput = false;
 
-      fetch('https://vue-http-demo-e84e4-default-rtdb.europe-west1.firebasedatabase.app/surveys.json', {
+    try {
+      const response = await fetch('https://vue-http-demo-e84e4-default-rtdb.europe-west1.firebasedatabase.app/surveys.json', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({ name: this.enteredName, rating: this.chosenRating}),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: this.enteredName,
+          rating: this.chosenRating
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error('Impossibile salvare i dati!');
+      }
+
+      // Resetta i campi del form
       this.enteredName = '';
       this.chosenRating = null;
-    },
+    } catch (error) {
+      this.error = error.message;
+    }
   },
+}
+
 };
 </script>
 
