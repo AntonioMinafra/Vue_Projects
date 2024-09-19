@@ -3,10 +3,11 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button @click="loadExeperiences">Load Submitted Experiences</base-button>
+        <base-button>Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
-      <ul v-else >
+      <p v-else-if="!isLoading && (!results || results.length === 0)">No stored exeperiences found. Start adding some survey results first.</p>
+      <ul v-else-if="!isLoading && results.length > 0" >
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -52,10 +53,10 @@ export default {
       this.results = results
     });
     },
-    mounted() {
-      this.loadExeperiences();
-    },
-  }
+  },
+  mounted() {
+    this.loadExeperiences();
+  },
 };
 </script>
 
