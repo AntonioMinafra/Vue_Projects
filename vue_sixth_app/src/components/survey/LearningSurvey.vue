@@ -56,7 +56,6 @@ export default {
       return;
     }
     this.invalidInput = false;
-
     try {
       const response = await fetch('https://vue-http-demo-e84e4-default-rtdb.europe-west1.firebasedatabase.app/surveys.json', {
         method: 'POST',
@@ -66,11 +65,9 @@ export default {
           rating: this.chosenRating
         }),
       });
-
       if (!response.ok) {
         throw new Error('Impossibile salvare i dati!');
       }
-
       // Resetta i campi del form
       this.enteredName = '';
       this.chosenRating = null;
